@@ -11,7 +11,7 @@ document.body.appendChild(renderer.domElement);
 const loader = new THREE.GLTFLoader();
 let table;
 
-loader.load('path/to/WorkTest-Table.glb', (gltf) => {
+loader.load('https://cdn.charpstar.net/Assets/WorkTest-Table.glb', (gltf) => {
     table = gltf.scene;
     scene.add(table);
 });
