@@ -7,19 +7,19 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('model-container').appendChild(renderer.domElement);
 
-// Load 3D model
-const loader = new THREE.GLTFLoader();
+// Load 3D model using FBXLoader
+const loader = new THREE.FBXLoader();
 let table;
 
-loader.load('https://cdn.charpstar.net/Assets/WorkTest-Table.glb', (gltf) => {
-    table = gltf.scene;
+loader.load('table.fbx', (fbx) => {
+    table = fbx;
     scene.add(table);
 });
 
 // Assuming you have color pickers with IDs 'tableTopColor' and 'tableLegColor'
 const tableTopColorPicker = document.getElementById('tableTopColor');
 const tableLegColorPicker = document.getElementById('tableLegColor');
-const tableTextureSelector = document.getElementById('tableTexture');
+// const tableTextureSelector = document.getElementById('tableTexture');
 
 tableTopColorPicker.addEventListener('input', (event) => {
     const color = new THREE.Color(event.target.value);
@@ -31,10 +31,10 @@ tableLegColorPicker.addEventListener('input', (event) => {
     applyColorToModel(color);
 });
 
-tableTextureSelector.addEventListener('change', () => {
-    const textureURL = tableTextureSelector.value;
-    applyTextureToModel(textureURL);
-});
+// tableTextureSelector.addEventListener('change', () => {
+//     const textureURL = tableTextureSelector.value;
+//     applyTextureToModel(textureURL);
+// });
 
 function applyColorToModel(color) {
     if (table) {
@@ -46,16 +46,18 @@ function applyColorToModel(color) {
     }
 }
 
-function applyTextureToModel(textureURL) {
-    if (table) {
-        const textureLoader = new THREE.TextureLoader();
-        textureLoader.load(textureURL, (texture) => {
-            table.traverse((child) => {
-                if (child.isMesh) {
-                    child.material.map = texture;
-                    child.material.needsUpdate = true;
-                }
-            });
-        });
-    }
-}
+// function applyTextureToModel(textureURL) {
+//     if (table) {
+//         const textureLoader = new THREE.TextureLoader();
+//         textureLoader.load(textureURL, (texture) => {
+//             table.traverse((child) => {
+//                 if (child.isMesh) {
+//                     child.material.map = texture;
+//                     child.material.needsUpdate = true;
+//                 }
+//             });
+//         });
+//     }
+// }
+
+// Add any other customization or controls you need
