@@ -5,19 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Product Configurator</title>
     <!-- Include Three.js library from CDN -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js"></script>
 
-<!-- Include Bootstrap CSS from CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css">
 
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
 
-    <!-- Your UI elements will be added here -->
+        #model-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
+        #configurator-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Your UI elements will be added here -->
-<input type="color" id="tableTopColor">
-<input type="color" id="tableLegColor">
+    <!-- Your 3D model container -->
+    <div id="model-container"></div>
 
+    <!-- Configurator UI -->
+    <div id="configurator-container">
+        <label for="tableTopColor">Table Top Color:</label>
+        <input type="color" id="tableTopColor">
+
+        <label for="tableLegColor">Table Leg Color:</label>
+        <input type="color" id="tableLegColor">
+
+        <label for="tableTexture">Table Texture:</label>
+        <select id="tableTexture">
+            <option value="https://cdn.charpstar.net/Assets/wood_texture.jpg">Wood</option>
+            <option value="https://cdn.charpstar.net/Assets/metal_texture.jpg">Metal</option>
+            <!-- Add more texture options as needed -->
+        </select>
+    </div>
+
+    <!-- Your scripts -->
+    <script type="module" src="main.js"></script>
 </body>
 </html>
